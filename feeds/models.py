@@ -5,10 +5,16 @@ from django.db import models
 class Source(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Board(models.Model):
     name = models.CharField(max_length=255)
     source = models.ForeignKey(Source)
+
+    def __str__(self):
+        return self.name
 
 
 class Article(models.Model):
@@ -18,3 +24,6 @@ class Article(models.Model):
     source = models.ForeignKey(Source)
     board = models.ForeignKey(Board)
     publish_time = models.DateTimeField()
+
+    def __str__(self):
+        return self.topic
